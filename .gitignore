@@ -1,0 +1,20 @@
+# Dependency directory
+node_modules
+
+# Build directory
+lib
+dist
+
+# Webpack stats
+stats.json
+
+# Parcel cache
+.cache
+
+# Other
+.DS_Store
+thumbs.db
+*.log
+
+# VS
+.vs
