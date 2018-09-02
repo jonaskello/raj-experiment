@@ -41,6 +41,5 @@ export interface DispatchCat {
 }
 
 export function dispatchCat(action: CatAction): DispatchCat {
-  console.log("in dispatchCat", action);
   return { type: "DispatchCat", action };
 }

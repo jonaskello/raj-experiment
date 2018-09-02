@@ -17,14 +17,11 @@ export function upate(
 ): Change<State, Actions.Action> {
   switch (action.type) {
     case "More": {
-      // https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=cat
-      console.log("MORRRE!");
       return [
         state,
         fetchJson(
           "https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=cat",
           json => {
-            console.log("json", json);
             return Actions.setImageUrl(json.data.image_url);
           }
         )
