@@ -13,7 +13,7 @@ export interface View<M, S, V> {
 }
 
 export interface Dispatch<M> {
-  (message?: M): void;
+  (message: M): void;
 }
 
 export interface Done<S> {

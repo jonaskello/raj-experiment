@@ -8,10 +8,10 @@ export const program: ReactProgram<State, Action> = {
   update
 };
 
-export function makeProgram(initialText: string): ReactProgram<State, Action> {
-  return {
-    init: [initialState(initialText)],
-    update,
-    view
-  };
-}
+// export function makeProgram(initialText: string): ReactProgram<State, Action> {
+//   return {
+//     init: [initialState(initialText)],
+//     update,
+//     view
+//   };
+// }

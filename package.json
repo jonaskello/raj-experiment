@@ -17,6 +17,7 @@
     "raj": "^1.0.0",
     "raj-react": "0.0.7",
     "react": "^16.4.2",
-    "react-dom": "^16.4.2"
+    "react-dom": "^16.4.2",
+    "ts-exhaustive-check": "^1.0.0"
   }
 }
