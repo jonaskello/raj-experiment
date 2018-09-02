@@ -10,5 +10,8 @@
   "scripts": {
     "start": "parcel src/index.html",
     "build": "tsc"
+  },
+  "dependencies": {
+    "raj": "^1.0.0"
   }
 }
