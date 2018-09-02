@@ -1,6 +1,7 @@
 import * as Actions from "./cat-actions";
 import { Change } from "raj";
 import { exhaustiveCheck } from "ts-exhaustive-check";
+import { fetchJson } from "../fetch-json";
 
 export interface State {
   imageUrl: string;
@@ -16,10 +17,21 @@ export function upate(
 ): Change<State, Actions.Action> {
   switch (action.type) {
     case "More": {
-      return [state];
+      // https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=cat
+      console.log("MORRRE!");
+      return [
+        state,
+        fetchJson(
+          "https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=cat",
+          json => {
+            console.log("json", json);
+            return Actions.setImageUrl(json.data.image_url);
+          }
+        )
+      ];
     }
-    case "Dummy": {
-      return [state];
+    case "SetImageUrl": {
+      return [{ ...state, imageUrl: action.url }];
     }
     default: {
       return exhaustiveCheck(action, true);

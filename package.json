@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "raj": "^1.0.0",
+    "raj-compose": "0.0.7",
     "raj-react": "0.0.7",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",

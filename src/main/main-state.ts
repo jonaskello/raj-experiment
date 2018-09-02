@@ -1,9 +1,10 @@
-import { Action } from "./main-actions";
+import { Action, dispatchCat } from "./main-actions";
 import * as CounterState from "../counter/counter-state";
 import * as HelloState from "../hello/hello-state";
 import * as CatState from "../cat/cat-state";
 import { exhaustiveCheck } from "ts-exhaustive-check";
 import { Change } from "raj";
+import { mapEffect } from "raj-compose";
 
 export interface State {
   readonly greeting: string;
@@ -57,8 +58,11 @@ export function update(
       ];
     }
     case "DispatchCat": {
-      const [newCatState] = CatState.upate(action.action, state.cat);
-      return [{ ...state, cat: newCatState }];
+      const [newCatState, catEffect] = CatState.upate(action.action, state.cat);
+      return [
+        { ...state, cat: newCatState },
+        mapEffect(catEffect, dispatchCat)
+      ];
     }
     default: {
       return exhaustiveCheck(action, true);
