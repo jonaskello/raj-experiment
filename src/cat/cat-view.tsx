@@ -7,7 +7,11 @@ export function view(state: State, dispatch: Dispatch<Actions.Action>) {
   return (
     <p>
       <img src={state.imageUrl} width="200" height="200" />
-      <button onClick={() => dispatch(Actions.more())}>More</button>
+      {state.loading ? (
+        "Loading..."
+      ) : (
+        <button onClick={() => dispatch(Actions.more())}>More</button>
+      )}
     </p>
   );
 }

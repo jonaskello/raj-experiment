@@ -5,10 +5,14 @@ import { fetchJson } from "../fetch-json";
 
 export interface State {
   imageUrl: string;
+  loading: boolean;
 }
 
 export const init: Change<State, Actions.Action> = [
-  { imageUrl: "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" }
+  {
+    imageUrl: "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif",
+    loading: false
+  }
 ];
 
 export function upate(
@@ -18,7 +22,7 @@ export function upate(
   switch (action.type) {
     case "More": {
       return [
-        state,
+        { ...state, loading: true },
         fetchJson(
           "https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=cat",
           json => {
@@ -28,7 +32,7 @@ export function upate(
       ];
     }
     case "SetImageUrl": {
-      return [{ ...state, imageUrl: action.url }];
+      return [{ ...state, imageUrl: action.url, loading: false }];
     }
     default: {
       return exhaustiveCheck(action, true);
