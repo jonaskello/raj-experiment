@@ -1,7 +1,7 @@
 import * as React from "react";
-import { State } from "./state";
+import { State } from "./hello-state";
 import { Dispatch } from "raj";
-import * as Actions from "./actions";
+import * as Actions from "./hello-actions";
 
 export function view(
   model: State,
