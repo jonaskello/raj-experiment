@@ -24,21 +24,33 @@ interface State {
   readonly text: string;
 }
 
-const helloProgram: Program<State, {}, any> = {
-  init: [{ text: "Hello" }],
-  update(_message: any, model: State) {
-    return [{ text: "world" }] as any;
-  },
-  view(model: State, dispatch: Dispatch<State>) {
-    return (
-      <p>
-        <button onClick={() => dispatch()}>Click me</button>
-        {model.text}
-      </p>
-    );
-  }
-};
+type Message = string;
 
-const App = program(React.Component, (_props: any) => helloProgram);
+function makeHelloProgram(
+  props: AppProps
+): Program<State, Message, React.ReactNode> {
+  return {
+    init: [{ text: props.initialText }],
+    update(message: any, model: State) {
+      return [{ text: message }] as any;
+    },
+    view(model: State, dispatch: Dispatch<Message>): JSX.Element {
+      return (
+        <p>
+          <button onClick={() => dispatch("Clicked")}>Click me</button>
+          {model.text}
+        </p>
+      );
+    }
+  };
+}
+
+type AppProps = { initialText: string };
+
+class MyProgramComponent extends React.Component<AppProps> {}
+
+const App = program(MyProgramComponent, (props: AppProps) =>
+  makeHelloProgram(props)
+);
 const root = document.getElementById("app");
-ReactDom.render(<App />, root);
+ReactDom.render(<App initialText="My initial text222" />, root);
