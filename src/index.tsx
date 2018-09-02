@@ -2,29 +2,17 @@ import React from "react";
 import ReactDom from "react-dom";
 import { program } from "raj-react";
 import { Dispatch, Program } from "raj";
-
-interface State {
-  readonly text: string;
-}
-
-type Message = string;
+import { view } from "./hello/view";
+import { update, State, initialState } from "./hello/state";
+import { Action } from "./hello/actions";
 
 function makeHelloProgram(
   props: AppProps
-): Program<State, Message, React.ReactNode> {
+): Program<State, Action, React.ReactNode> {
   return {
-    init: [{ text: props.initialText }],
-    update(message: any, model: State) {
-      return [{ text: message }] as any;
-    },
-    view(model: State, dispatch: Dispatch<Message>): JSX.Element {
-      return (
-        <p>
-          <button onClick={() => dispatch("Clicked")}>Click me</button>
-          {model.text}
-        </p>
-      );
-    }
+    init: [initialState(props.initialText)],
+    update,
+    view
   };
 }
 
