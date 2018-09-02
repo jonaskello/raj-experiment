@@ -1,12 +1,13 @@
 import { view } from "./main-view";
-import { update, State, init } from "./main-state";
+import { update, State, init, done } from "./main-state";
 import { Action } from "./main-actions";
 import { ReactProgram } from "raj-react";
 
 export function makeProgram(_greeting: string): ReactProgram<State, Action> {
   return {
-    init: init,
+    init,
     update,
-    view
+    view,
+    done
   };
 }

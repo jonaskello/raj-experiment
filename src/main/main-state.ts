@@ -89,4 +89,7 @@ export function update(
   }
 }
 
-export function done() {}
+export function done(_state: State): void {
+  console.log("main done");
+  TickerState.done();
+}

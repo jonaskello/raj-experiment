@@ -13,10 +13,6 @@ export interface State {
 
 export const init: Change<State, Actions.Action> = [{ count: 0 }, startTickSub];
 
-export function done() {
-  cancelTickSub();
-}
-
 export function update(
   action: Actions.Action,
   state: State
@@ -35,4 +31,9 @@ export function update(
       return exhaustiveCheck(action, true);
     }
   }
+}
+
+export function done() {
+  console.log("ticker done");
+  cancelTickSub();
 }

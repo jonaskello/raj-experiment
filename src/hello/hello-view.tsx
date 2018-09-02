@@ -8,11 +8,11 @@ export function view(
   dispatch: Dispatch<Actions.Action>
 ): JSX.Element {
   return (
-    <p>
+    <span>
       <button onClick={() => dispatch(Actions.setText("Clicked!"))}>
         Click me
       </button>
       {model.text}
-    </p>
+    </span>
   );
 }

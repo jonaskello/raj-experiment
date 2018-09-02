@@ -5,10 +5,10 @@ import * as Actions from "./counter-actions";
 
 export function view(state: State, dispatch: Dispatch<Actions.Action>) {
   return (
-    <p>
+    <span>
       The count is: {state.count}{" "}
       <button onClick={() => dispatch(Actions.decrement())}>-</button>
       <button onClick={() => dispatch(Actions.increment())}>+</button>
-    </p>
+    </span>
   );
 }
