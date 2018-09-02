@@ -1,6 +1,7 @@
 import { Action } from "./main-actions";
 import * as CounterState from "../counter/counter-state";
 import * as HelloState from "../hello/hello-state";
+import * as CatState from "../cat/cat-state";
 import { exhaustiveCheck } from "ts-exhaustive-check";
 import { Change } from "raj";
 
@@ -9,6 +10,7 @@ export interface State {
   readonly hello: HelloState.State;
   readonly counter1: CounterState.State;
   readonly counter2: CounterState.State;
+  readonly cat: CatState.State;
 }
 
 export function initialState(greeting: string): State {
@@ -16,7 +18,8 @@ export function initialState(greeting: string): State {
     greeting: greeting,
     hello: HelloState.initialState(greeting),
     counter1: CounterState.initialState(0),
-    counter2: CounterState.initialState(10)
+    counter2: CounterState.initialState(10),
+    cat: CatState.initialState()
   };
 }
 
@@ -52,6 +55,10 @@ export function update(
           counter2: newCounterState
         }
       ];
+    }
+    case "DispatchCat": {
+      const [newCatState] = CatState.upate(action.action, state.cat);
+      return [{ ...state, cat: newCatState }];
     }
     default: {
       return exhaustiveCheck(action, true);

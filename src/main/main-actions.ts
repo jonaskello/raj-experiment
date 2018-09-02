@@ -1,7 +1,12 @@
 import { Action as CounterAction } from "../counter/counter-actions";
 import { Action as HelloAction } from "../hello/hello-actions";
+import { Action as CatAction } from "../cat/cat-actions";
 
-export type Action = DispatchHello | DispatchCounter1 | DispatchCounter2;
+export type Action =
+  | DispatchHello
+  | DispatchCounter1
+  | DispatchCounter2
+  | DispatchCat;
 
 export interface DispatchHello {
   type: "DispatchHello";
@@ -28,4 +33,13 @@ export interface DispatchCounter2 {
 
 export function dispatchCounter2(action: CounterAction): DispatchCounter2 {
   return { type: "DispatchCounter2", action };
+}
+
+export interface DispatchCat {
+  type: "DispatchCat";
+  action: CatAction;
+}
+
+export function dispatchCat(action: CatAction): DispatchCat {
+  return { type: "DispatchCat", action };
 }
