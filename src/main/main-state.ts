@@ -5,7 +5,7 @@ import * as CatState from "../cat/cat-state";
 import * as TickerState from "../ticker/ticker-state";
 import { exhaustiveCheck } from "ts-exhaustive-check";
 import { Change } from "raj";
-import { mapEffect } from "raj-compose";
+import { mapEffect, batchEffects } from "raj-compose";
 
 export interface State {
   readonly greeting: string;
@@ -17,11 +17,6 @@ export interface State {
 }
 
 const [counterState, counterEffect] = CounterState.init;
-// const init = [
-//   { counterState },
-//   mapEffect(counterEffect, Actions.dispatchCounter1)
-// ];
-
 const [catState, catEffect] = CatState.init;
 const [helloState, helloEffect] = HelloState.init;
 const [tickerState, tickerEffect] = TickerState.init;
@@ -34,7 +29,14 @@ export const init: Change<State, Actions.Action> = [
     counter2: counterState,
     cat: catState,
     ticker: tickerState
-  }
+  },
+  batchEffects<Actions.Action>([
+    mapEffect(counterEffect, Actions.dispatchCounter1),
+    mapEffect(counterEffect, Actions.dispatchCounter2),
+    mapEffect(catEffect, Actions.dispatchCat),
+    mapEffect(helloEffect, Actions.dispatchHello),
+    mapEffect(tickerEffect, Actions.dispatchTicker)
+  ])
 ];
 
 export function update(
