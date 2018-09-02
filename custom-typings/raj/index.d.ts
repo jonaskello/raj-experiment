@@ -1,26 +1,30 @@
-export type Change = [any, any?];
+export type Change<S, M> = [S, Effect<M>?];
 
-export interface Update {
-  (message: any, state: any): Change;
+export interface Effect<M> {
+  (dispatch: Dispatch<M>): void;
 }
 
-export interface View {
-  (state: any, dispatch: Dispatch): any;
+export interface Update<M, S> {
+  (message: M, state: S): Change<S, M>;
 }
 
-export interface Dispatch {
-  (message?: any): void;
+export interface View<M, S, V> {
+  (state: S, dispatch: Dispatch<M>): V;
 }
 
-export interface Done {
-  (state: any): void;
+export interface Dispatch<M> {
+  (message?: M): void;
 }
 
-export interface Program {
-  readonly init?: Change;
-  readonly update: Update;
-  readonly view: View;
-  readonly done?: Done;
+export interface Done<S> {
+  (state: S): void;
 }
 
-export function runtime(program: Program): void;
+export interface Program<S, M, V> {
+  readonly init?: Change<S, M>;
+  readonly update: Update<M, S>;
+  readonly view: View<M, S, V>;
+  readonly done?: Done<S>;
+}
+
+export function runtime<S, M, V>(program: Program<S, M, V>): void;

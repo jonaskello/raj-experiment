@@ -7,7 +7,7 @@ runtime({
   update(_message: {}, state: State) {
     return [state + 1]; // Increment the state
   },
-  view(state: State, dispatch: Dispatch) {
+  view(state: State, dispatch: Dispatch<any>) {
     const keepCounting = window.confirm(`Count is ${state}. Increment?`);
     if (keepCounting) {
       dispatch();
