@@ -6,9 +6,7 @@ export interface State {
   count: number;
 }
 
-export function initialState(count: number): State {
-  return { count };
-}
+export const init: Change<State, Action> = [{ count: 0 }];
 
 export function update(action: Action, state: State): Change<State, Action> {
   switch (action.type) {

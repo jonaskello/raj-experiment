@@ -7,9 +7,9 @@ export interface State {
   imageUrl: string;
 }
 
-export function initialState() {
-  return { imageUrl: "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" };
-}
+export const init: Change<State, Actions.Action> = [
+  { imageUrl: "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" }
+];
 
 export function upate(
   action: Actions.Action,

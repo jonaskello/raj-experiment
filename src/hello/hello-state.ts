@@ -5,14 +5,9 @@ export interface State {
   readonly text: string;
 }
 
-export function initialState(initialText: string): State {
-  return { text: initialText };
-}
+export const init: Change<State, Action> = [{ text: "initialText" }];
 
-export function update(
-  action: Action,
-  state: State = initialState("")
-): Change<State, Action> {
+export function update(action: Action, state: State): Change<State, Action> {
   switch (action.type) {
     case "SetText":
       return [{ text: action.text }];

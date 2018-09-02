@@ -1,12 +1,14 @@
 import { Action as CounterAction } from "../counter/counter-actions";
 import { Action as HelloAction } from "../hello/hello-actions";
 import { Action as CatAction } from "../cat/cat-actions";
+import { Action as TickerAction } from "../ticker/ticker-actions";
 
 export type Action =
   | DispatchHello
   | DispatchCounter1
   | DispatchCounter2
-  | DispatchCat;
+  | DispatchCat
+  | DispatchTicker;
 
 export interface DispatchHello {
   type: "DispatchHello";
@@ -42,4 +44,13 @@ export interface DispatchCat {
 
 export function dispatchCat(action: CatAction): DispatchCat {
   return { type: "DispatchCat", action };
+}
+
+export interface DispatchTicker {
+  type: "DispatchTicker";
+  action: TickerAction;
+}
+
+export function dispatchTicker(action: TickerAction): DispatchTicker {
+  return { type: "DispatchTicker", action };
 }

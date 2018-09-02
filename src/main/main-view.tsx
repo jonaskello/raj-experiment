@@ -5,6 +5,7 @@ import * as Actions from "./main-actions";
 import { view as helloView } from "../hello/hello-view";
 import { view as counterView } from "../counter/counter-view";
 import { view as catView } from "../cat/cat-view";
+import { view as tickView } from "../ticker/ticker-view";
 
 export function view(state: State, dispatch: Dispatch<Actions.Action>) {
   return (
@@ -29,6 +30,10 @@ export function view(state: State, dispatch: Dispatch<Actions.Action>) {
       <div>
         Cat:
         {catView(state.cat, a => dispatch(Actions.dispatchCat(a)))}
+      </div>
+      <div>
+        Tick:
+        {tickView(state.ticker, a => dispatch(Actions.dispatchTicker(a)))}
       </div>
     </div>
   );
