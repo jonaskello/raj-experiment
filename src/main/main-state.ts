@@ -61,7 +61,7 @@ export function update(
       const [newCatState, catEffect] = CatState.upate(action.action, state.cat);
       return [
         { ...state, cat: newCatState },
-        mapEffect(catEffect!, dispatchCat)
+        mapEffect(catEffect, dispatchCat)
       ];
     }
     default: {
