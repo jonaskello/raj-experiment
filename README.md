@@ -2,7 +2,7 @@
 
 Exploring the [raj framework](https://www.npmjs.com/package/raj) in typescript.
 
-# How to use
+## How to use
 
 ```
 npm install
