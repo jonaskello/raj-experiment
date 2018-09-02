@@ -4,6 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
+    "@types/react": "^16.4.13",
+    "@types/react-dom": "^16.0.7",
     "parcel": "^1.9.7",
     "typescript": "^3.0.3"
   },
@@ -12,6 +14,9 @@
     "build": "tsc"
   },
   "dependencies": {
-    "raj": "^1.0.0"
+    "raj": "^1.0.0",
+    "raj-react": "0.0.7",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
   }
 }
